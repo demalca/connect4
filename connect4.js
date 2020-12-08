@@ -60,6 +60,7 @@ function findSpotForCol(x) {
   let y;
   for (y = 5; y >= 0; y--) {
     if (board[y][x] === null) return y;
+    //from bottom to top find x's first y and drop piece
   }
   return;
 }
