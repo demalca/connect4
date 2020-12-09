@@ -11,6 +11,8 @@ const HEIGHT = 6;
 let currPlayer = 1; // active player: 1 or 2
 const board = []; // array of rows, each row is array of cells  (board[y][x])
 
+const button = document.querySelector("button");
+button.addEventListener("click", newGame);
 /** makeBoard: create in-JS board structure:
  *    board = array of rows, each row is array of cells  (board[y][x])
  */
@@ -33,7 +35,7 @@ function makeHtmlBoard() {
   // TODO: add comment for this code
   const top = document.createElement("tr"); //sets top row
   top.setAttribute("id", "column-top"); //sets id as column top to top row
-  top.addEventListener("click", handleClick); //handleClick func on click event
+  top.addEventListener("click", handleClick); //handleClick func on click event"
 
   for (let x = 0; x < WIDTH; x++) {
     let headCell = document.createElement("td"); //creates top row tds
@@ -91,6 +93,14 @@ function endGame(msg) {
       alert("No more plays. Game has ended. Play again");
     }
   }, 100);
+}
+
+function newGame() {
+  board.length = 0;
+  let htmlBoard = document.querySelector("#board");
+  htmlBoard.innerHTML = "";
+  makeBoard();
+  makeHtmlBoard();
 }
 
 /** handleClick: handle click of column top to play piece */
